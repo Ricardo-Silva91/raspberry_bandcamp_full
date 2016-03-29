@@ -108,7 +108,7 @@ def auto_download(args):
     print('opening guerrilla window')
 
     e_driver = get_driver(args['browser'], args['folder'], args['display'])  # Email driver
-    # e_driver.implicitly_wait(1)
+    e_driver.implicitly_wait(1)
     print('going to guerrilla')
     e_driver.get('https://www.guerrillamail.com/')
     args['email'] = e_driver.find_element_by_xpath('//span[@id="email-widget"]').text

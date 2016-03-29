@@ -4,6 +4,8 @@ import os
 import calc_size
 import argparse
 
+import bandcamp_get
+
 
 def get_parser():
     parser = argparse.ArgumentParser(description='bandcamp sniffer')
@@ -36,7 +38,9 @@ def brain(download_folder, json_file, data):
     # prepared_command = lucky_cunt['id']
     print(prepared_command)
     # call('', prepared_command)
-    os.system(prepared_command)
+    # os.system(prepared_command)
+
+    bandcamp_get.bandcamp_get_for_import(lucky_cunt['id'], download_folder, '0')
 
     # print(data)
     # print(str(len(data['bc-get'])))
@@ -44,14 +48,14 @@ def brain(download_folder, json_file, data):
     return
 
 
-def command_line_runner():
-    parser_j = get_parser()
-    args = vars(parser_j.parse_args())
-    folder = args['folder']
-    size = int(args['size'])
+def bandcamp_to_hdd_for_import(folder, size, file):
+    # parser_j = get_parser()
+    # args = vars(parser_j.parse_args())
+    # folder = args['folder']
+    # size = int(args['size'])
 
     try:
-        with open(args['file'], 'r') as data_file:
+        with open(file, 'r') as data_file:
             data = json.load(data_file)
     except Exception:
         print('please insert working json file path')
@@ -60,16 +64,13 @@ def command_line_runner():
     dir_size = calc_size.get_size(folder)
     initial_size = dir_size
 
-    print(calc_size.get_size(args['folder']))
+    print(calc_size.get_size(folder))
 
     while dir_size < initial_size + size*1000000:
-        brain(folder, args['file'], data)
+        brain(folder, file, data)
 
         dir_size = calc_size.get_size(folder)
         print(dir_size)
 
     print('end of jogos')
 
-
-if __name__ == '__main__':
-    command_line_runner()
