@@ -18,13 +18,13 @@ def get_parser():
 def brain(download_folder, json_file, data):
 
     # get artist username
-    lucky_cunt = data['bc-get'][0]
+    lucky_one = data['bc-get'][0]
 
     # remove it from array
     data['bc-get'] = data['bc-get'][1:]
 
     # add it to 'used' list
-    data['used'].append(lucky_cunt)
+    data['used'].append(lucky_one)
 
     # update json file
     with open(json_file, 'w') as f:
@@ -32,15 +32,15 @@ def brain(download_folder, json_file, data):
 
     # print(str(len(data['bc-get'])))
 
-    # print(lucky_cunt['id'])
+    # print(lucky_one['id'])
 
-    prepared_command = 'bandcamp-get -f ' + download_folder + ' ' + lucky_cunt['id']
-    # prepared_command = lucky_cunt['id']
+    prepared_command = 'bandcamp-get -f ' + download_folder + ' ' + lucky_one['id']
+    # prepared_command = lucky_one['id']
     print(prepared_command)
     # call('', prepared_command)
     # os.system(prepared_command)
 
-    bandcamp_get.bandcamp_get_for_import(lucky_cunt['id'], download_folder, '0')
+    bandcamp_get.bandcamp_get_for_import(lucky_one['id'], download_folder, '0')
 
     # print(data)
     # print(str(len(data['bc-get'])))
@@ -73,4 +73,3 @@ def bandcamp_to_hdd_for_import(folder, size, file):
         print(dir_size)
 
     print('end of jogos')
-

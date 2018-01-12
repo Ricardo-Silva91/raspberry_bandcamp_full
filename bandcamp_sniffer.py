@@ -153,7 +153,7 @@ def sniff(browser, display, data, data_file, args_file, time_to_sniff):
 
 
                 except Exception:
-                    print("cheap fucks!")
+                    print("cheap!")
 
                 # id_element_green = driver.find_elements_by_xpath('//span[@class="item-price"]')[0]
                 # print('id_element_green: {}'.format(id_element_green))

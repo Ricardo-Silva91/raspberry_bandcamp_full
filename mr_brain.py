@@ -39,7 +39,6 @@ def command_line_runner():
 
     # move the folders to after_folder
     prepared_command = 'mv ' + args['download_folder'] + '/* ' + args['after_folder']
-    # prepared_command = lucky_cunt['id']
     print(prepared_command)
     # call('', prepared_command)
     os.system(prepared_command)
